@@ -1,18 +1,26 @@
 import sys
-from importlib import import_module
-from django.conf import settings
-from datetime import datetime
-from django.utils import six
-from wagtail.wagtailembeds.oembed_providers import get_oembed_provider
-from wagtail.wagtailembeds.models import Embed
-import urllib2, urllib
 import json
+import urllib2, urllib
+from datetime import datetime
+from importlib import import_module
+
+from django.utils import six
+from django.conf import settings
+
+from .oembed_providers import get_oembed_provider
+from .models import Embed
 
 
-class EmbedNotFoundException(Exception): pass
+class EmbedNotFoundException(Exception):
+    pass
 
-class EmbedlyException(Exception): pass
-class AccessDeniedEmbedlyException(EmbedlyException): pass
+
+class EmbedlyException(Exception):
+    pass
+
+
+class AccessDeniedEmbedlyException(EmbedlyException):
+    pass
 
 
 # Pinched from django 1.7 source code.
